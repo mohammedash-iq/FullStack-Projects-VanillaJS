@@ -1,77 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .task-div {
-        display: flex;
-        gap: 1rem;
-      }
-    </style>
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      border: none;
+      background: rgb(0, 0, 0);
+      color: #ffffff;
+    }
+
+    body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .main {
+      padding: 2rem;
+    }
+
+    .done {
+      padding: 2rem;
+    }
+
+    #task-input,
+    #submit-task
+   {
+    margin: 0.2rem;
+      color: rgb(34, 34, 34);
+      background: #d0d0d0;
+      padding: 1rem;
+    }
+    .doneBtn,
+    .deleteBtn {
+      margin: 0.2rem;
+      color: rgb(34, 34, 34);
+      background: #d0d0d0;
+      padding: 1rem;
+      justify-content:flex-end;
+    }
+
+    .task-div {
+      display: flex;
+      width: 80%;
+    }
+
+    .task-div>p {
+      font-size: 1rem;
+      margin-inline: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
     <h1>To Do List</h1>
     <div class="create-task">
       <input type="text" placeholder="Enter Your Task" id="task-input" />
       <button id="submit-task" type="submit">Add Task</button>
+      <h3></h3>
     </div>
-    <h3></h3>
-    <div class="tasks">
-        
-    </div>
+    <div class="tasks"></div>
+  </div>
+  </div>
+  <div class="done">
     <h2>Task Done</h2>
-      <ul class="Done-Task"></ul>
-    <script>
-      const taskInputText = document.querySelector("#task-input");
-      const subBtn = document.querySelector("#submit-task");
-      let tasks = document.querySelector(".tasks");
-      let msg = document.querySelector("h3");
-      let Donetask=document.querySelector(".Done-Task")
-      let tasklist = [];
-      subBtn.addEventListener("click", () => {
-        let inputText = taskInputText.value;
-        if (inputText == "") {
-          msg.innerHTML = "Enter a Proper Task";
-        } else if (tasklist.includes(inputText) == true) {
-          msg.innerHTML = "Task already Exists";
-        } else {
-          msg.innerHTML = "Task Created";
-          tasklist.push(inputText);
-          let taskDiv = document.createElement("div");
-          taskDiv.classList.add("task-div");
-          let taskText = document.createElement("p");
-          taskText.innerHTML = inputText;
-          let taskDone = document.createElement("button");
-          taskDone.classList.add("doneBtn");
-          taskDone.innerText = "Done";
-          let taskDelete = document.createElement("button");
-          taskDelete.classList.add("deleteBtn");
-          taskDelete.innerText = "Delete";
-          taskDiv.appendChild(taskText);
-          taskDiv.appendChild(taskDone);
-          taskDiv.appendChild(taskDelete);
-          tasks.appendChild(taskDiv);
-          taskInputText.value = "";
-        }
-      });
-      tasks.addEventListener("click", (event) => {
-        if (event.target.classList.contains("deleteBtn")) {
-          event.target.parentElement.remove();
-          tasklist.pop(event.target.parentElement.querySelector("p").innerHTML);
-        }
-        if (event.target.classList.contains("doneBtn")) {
-          event.target.parentElement.remove();
-          tasklist.forEach((item)=>{
-              let li =document.createElement("li");
-              li.innerHTML=item;
-              Donetask.appendChild(li);
-          })
-          tasklist.pop(event.target.parentElement.querySelector("p").innerHTML);
-          }
-      });
-    </script>
-  </body>
+    <ul class="Done-Task"></ul>
+  </div>
+
+  <script>
+    const taskInputText = document.querySelector("#task-input");
+    const subBtn = document.querySelector("#submit-task");
+    let tasks = document.querySelector(".tasks");
+    let msg = document.querySelector("h3");
+    let Donetask = document.querySelector(".Done-Task")
+    let tasklist = [];
+    subBtn.addEventListener("click", () => {
+      let inputText = taskInputText.value;
+      if (inputText == "") {
+        msg.innerHTML = "Enter a Proper Task";
+      } else if (tasklist.includes(inputText) == true) {
+        msg.innerHTML = "Task already Exists";
+      } else {
+        msg.innerHTML = "Task Created";
+        tasklist.push(inputText);
+        let taskDiv = document.createElement("div");
+        taskDiv.classList.add("task-div");
+        let taskText = document.createElement("p");
+        taskText.innerHTML = inputText;
+        let taskDone = document.createElement("button");
+        taskDone.classList.add("doneBtn");
+        taskDone.innerText = "Done";
+        let taskDelete = document.createElement("button");
+        taskDelete.classList.add("deleteBtn");
+        taskDelete.innerText = "Delete";
+        taskDiv.appendChild(taskText);
+        taskDiv.appendChild(taskDone);
+        taskDiv.appendChild(taskDelete);
+        tasks.appendChild(taskDiv);
+        taskInputText.value = "";
+      }
+    });
+    tasks.addEventListener("click", (event) => {
+      if (event.target.classList.contains("deleteBtn")) {
+        event.target.parentElement.remove();
+        tasklist.pop(event.target.parentElement.querySelector("p").innerHTML);
+      }
+      if (event.target.classList.contains("doneBtn")) {
+        event.target.parentElement.remove();
+        tasklist.forEach((item) => {
+          let li = document.createElement("li");
+          li.innerHTML = item;
+          Donetask.appendChild(li);
+        })
+        tasklist.pop(event.target.parentElement.querySelector("p").innerHTML);
+      }
+    });
+  </script>
+</body>
+
 </html>
