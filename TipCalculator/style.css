@@ -1,0 +1,15 @@
+.tipform {
+  display: flex;
+}
+.inputbox {
+  color: black;
+  padding: 20px;
+  margin-right: 20px;
+  border: none;
+  background: rgb(207, 207, 234);
+}
+.tipvalue {
+  font-size: 3rem;
+  padding: 20px;
+  color: rgb(33, 1 55, 115);
+}

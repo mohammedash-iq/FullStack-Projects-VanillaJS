@@ -1,0 +1,45 @@
+* {
+    border: none;
+    background: rgb(0, 0, 0);
+    color: #ffffff;
+  }
+
+  body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .main {
+    padding: 2rem;
+  }
+
+  .done {
+    padding: 2rem;
+  }
+
+  #task-input,
+  #submit-task
+ {
+  margin: 0.2rem;
+    color: rgb(34, 34, 34);
+    background: #d0d0d0;
+    padding: 1rem;
+  }
+  .doneBtn,
+  .deleteBtn {
+    margin: 0.2rem;
+    color: rgb(34, 34, 34);
+    background: #d0d0d0;
+    padding: 1rem;
+    justify-content:flex-end;
+  }
+
+  .task-div {
+    display: flex;
+    width: 80%;
+  }
+
+  .task-div>p {
+    font-size: 1rem;
+    margin-inline: 2rem;
+  }
