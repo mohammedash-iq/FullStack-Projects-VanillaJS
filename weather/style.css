@@ -1,0 +1,28 @@
+* {
+  border: 0;
+  margin: 0;
+}
+body {
+  background-color: rgb(95, 95, 95);
+}
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  color: aliceblue;
+  background: #000;
+  border: none;
+  width: 8rem;
+  padding: 1rem;
+  margin-inline: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+.weatherDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+}
