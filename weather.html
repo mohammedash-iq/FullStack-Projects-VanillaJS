@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(177, 247, 183);">
+    <h1 style="text-align: center;">WEATHER FORECAST</h1>
+    <div class="form-div" style="display: flex;justify-content: center; gap: 5px;">
+        <form >
+            <input type="text" placeholder="Search City..." id="input-box">
+        </form>
+        <button id="submit-btn">Search</button>
+    </div>
+    <div style="display: flex; justify-content: center;text-align: center;">
+        <main>
+            <h2>City Name</h2>
+            <div class="weather-div">
+                <h4>Current Weather</h4>
+                <h4>weather details</h4>
+            </div>
+        </main>
+    </div>
+    <script>
+        const input = document.querySelector("#input-box");
+        const srchbtn = document.querySelector("#submit-btn");
+        srchbtn.addEventListener("click", () => {
+            searched = input.value;
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searched}&appid=7fd41861b91050d034b97cb1c82abab1`)
+                .then(fetchdata => fetchdata.json())
+                .then(geoData => {
+                    console.log(geoData.coord.lon)
+                    getRealData(geoData.coord.lon, geoData.coord.lat);
+                })
+                .catch(error=>
+                    console.log("error fetching city data")
+                )
+            function getRealData(lon, lat) {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7fd41861b91050d034b97cb1c82abab1`)
+                    .then(fetchdata => fetchdata.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error=>
+                        console.log("error fetching weather data")
+                    )
+            }
+        })
+
+    </script>
+</body>
+
+</html>
