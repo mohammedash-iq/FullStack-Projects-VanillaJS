@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2>To Do List</h2>
+        <form>
+            <input type="text" placeholder="Task Name.." id="task-name-input">
+            <input type="text" placeholder="Task Discription..." id="task-disc-input">
+
+        </form>
+        <button id="add-task-btn">Add Task</button>
+        <h3 style="color: red;"></h3>
+    </header>
+    <main>
+        <div>
+            <h4>Pending Task</h4>
+            <div id="tasks"></div>
+        </div>
+    </main>
+    <script>
+        let data = localStorage.getItem("tasks");
+        let taskarray = data ? JSON.parse(data) : [];
+        const taskname = document.querySelector("#task-name-input");
+        const taskdisc = document.querySelector("#task-disc-input");
+        const addbtn = document.querySelector("#add-task-btn")
+        const taskdiv = document.querySelector("#tasks")
+        const warning = document.querySelector("h3");
+        const loadtask=function(){
+        taskarray.forEach(element => {
+            const maindiv = document.createElement("div");
+            const subdiv = document.createElement("div")
+            const task = document.createElement("h4")
+            task.innerHTML = element.name;
+            const disc = document.createElement("p")
+            disc.innerHTML = element.disc;
+            const deletebtn = document.createElement("button");
+            deletebtn.innerHTML = "Delete"
+            deletebtn.setAttribute("id", element.name)
+            const donebtn = document.createElement("button")
+            donebtn.setAttribute("id", element.name)
+            donebtn.innerHTML = "Done"
+            subdiv.appendChild(task)
+            subdiv.appendChild(disc)
+            maindiv.appendChild(subdiv)
+            maindiv.appendChild(deletebtn)
+            maindiv.appendChild(donebtn)
+            taskdiv.appendChild(maindiv)
+        });}
+        loadtask()
+        addbtn.addEventListener("click", () => {
+            let count = 0
+            taskarray.forEach(element => {
+                if (element.name == taskname.value) {
+                    count++;
+                    console.log(count)
+                }
+            })
+            if (count == 0) {
+                newtask = {name: taskname.value, disc: taskdisc.value }
+                taskarray.push(newtask)
+                localStorage.setItem("tasks", JSON.stringify(taskarray))
+                taskdiv.innerHTML="";
+                loadtask()
+            }
+            else if (taskname.value == "") {
+                warning.innerHTML = "Please Enter a Task !"
+            }
+            else {
+                warning.innerHTML = "Task already Exists !"
+            }
+        })
+        const deletebtn = document.querySelector("#tasks")
+        
+        deletebtn.addEventListener("click",(event)=>{
+            if(event.target.parentElement.lastChild==event.target){
+                const index =taskarray.findIndex(task=>task.name==event.target.getAttribute("id"))
+                taskarray.splice(index,1)
+                localStorage.setItem("tasks", JSON.stringify(taskarray))
+                taskdiv.innerHTML="";
+                loadtask()
+            }
+            else {
+                const index =taskarray.findIndex(task=>task.name==event.target.getAttribute("id"))
+                console.log(index)
+                taskarray.splice(index,1)
+                localStorage.setItem("tasks", JSON.stringify(taskarray))
+                taskdiv.innerHTML="";
+                loadtask()
+            }
+        })
+    </script>
+</body>
+
+</html>
