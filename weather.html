@@ -26,11 +26,12 @@
         </main>
     </div>
     <script>
+const apiKey ="Your API Key here";
         const input = document.querySelector("#input-box");
         const srchbtn = document.querySelector("#submit-btn");
         srchbtn.addEventListener("click", () => {
             searched = input.value;
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searched}&appid=7fd41861b91050d034b97cb1c82abab1`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searched}&appid=${apiKey}`)
                 .then(fetchdata => fetchdata.json())
                 .then(geoData => {
                     console.log(geoData.coord.lon)
@@ -40,7 +41,7 @@
                     console.log("error fetching city data")
                 )
             function getRealData(lon, lat) {
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7fd41861b91050d034b97cb1c82abab1`)
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={apiKey}`)
                     .then(fetchdata => fetchdata.json())
                     .then(data => {
                         console.log(data);
