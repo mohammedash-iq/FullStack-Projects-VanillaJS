@@ -79,20 +79,19 @@
         const deletebtn = document.querySelector("#tasks")
         
         deletebtn.addEventListener("click",(event)=>{
-            if(event.target.parentElement.lastChild==event.target){
+            if(event.target.innerHTML=="Done"){
                 const index =taskarray.findIndex(task=>task.name==event.target.getAttribute("id"))
                 taskarray.splice(index,1)
                 localStorage.setItem("tasks", JSON.stringify(taskarray))
-                taskdiv.innerHTML="";
-                loadtask()
+                tasks.removeChild(event.target.parentElement)
+                
             }
             else {
                 const index =taskarray.findIndex(task=>task.name==event.target.getAttribute("id"))
                 console.log(index)
                 taskarray.splice(index,1)
                 localStorage.setItem("tasks", JSON.stringify(taskarray))
-                taskdiv.innerHTML="";
-                loadtask()
+                tasks.removeChild(event.target.parentElement)
             }
         })
     </script>
