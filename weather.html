@@ -12,16 +12,22 @@
     <h1 style="text-align: center;">WEATHER FORECAST</h1>
     <div class="form-div" style="display: flex;justify-content: center; gap: 5px;">
         <form >
-            <input type="text" placeholder="Search City..." id="input-box">
+            <input type="text" placeholder="Search City..." id="input-box" style="border-style:none;padding:3px;border-radius:5px;">
         </form>
-        <button id="submit-btn">Search</button>
+        <button id="submit-btn" style="border-style:nonr;border-radius: 5px">Search</button>
     </div>
     <div style="display: flex; justify-content: center;text-align: center;">
         <main>
             <h2>City Name</h2>
             <div class="weather-div">
-                <h4>Current Weather</h4>
-                <h4>weather details</h4>
+              <div style="display: flex;justify-content: center;">                <h4 style="padding:10px;color: green;"> Weather</h4>
+              <h5 style="padding: 10px;">weather Detail</h5>
+              </div>
+<div style="display: flex;justify-content: center;">    <h4 style="padding:10px;color: green;">Temperature</h4>
+<h5 style="padding:10px;">Temperature details</h5></div>
+            <div style="display: flex;justify-content: center;">                <h4 style="padding:10px;color: green;"> Wind Data</h4>
+                          <h5 style="padding: 10px;">Wind Detail</h5>
+              </div>
             </div>
         </main>
     </div>
