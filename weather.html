@@ -22,22 +22,22 @@
             <h2 id="city-name">City Name</h2>
             <div class="weather-div">
                 <div style="display: flex;justify-content: center;">
-                    <h4 style="padding:10px;color: green;"> Weather :</h4>
-                    <h5 id="weather-div" style="padding: 10px;">weather Detail</h5>
+                    <h3 style="padding:10px;color: green;"> Weather :</h3>
+                    <h4 id="weather-div" style="padding: 10px;">weather Detail</h4>
                 </div>
                 <div style="display: flex;justify-content: center;">
-                    <h4 style="padding:10px;color: green;">Temperature :</h4>
-                    <h5 id="temp-div" style="padding:10px;">Temperature details</h5>
+                    <h3 style="padding:10px;color: green;">Temperature :</h3>
+                    <h4 id="temp-div" style="padding:10px;">Temperature details</h4>
                 </div>
                 <div style="display: flex;justify-content: center;">
-                    <h4 style="padding:10px;color: green;"> Wind Speed :</h4>
-                    <h5 id="wind-div" style="padding: 10px;">Wind Detail</h5>
+                    <h3 style="padding:10px;color: green;"> Wind Speed :</h3>
+                    <h4 id="wind-div" style="padding: 10px;">Wind Detail</h4>
                 </div>
             </div>
         </main>
     </div>
     <script>
-        const apiKey = "your api key";
+        const apiKey = "your key here";
         const input = document.querySelector("#input-box");
         const srchbtn = document.querySelector("#submit-btn");
         const weatherdiv = document.querySelector("#weather-div")
@@ -62,7 +62,7 @@
                     cityname.innerHTML = data.name;
                     tempdiv.innerHTML = `${Math.trunc(data.main.temp - 273)} Celcius`;
                     winddiv.innerHTML = `${data.wind.speed} km/h`;
-                    weatherdiv.innerHTML = data.weather.description;
+                    weatherdiv.innerHTML =data.weather[0].description;
                 })
                 .catch(error =>{
                     cityname.innerHTML = "error fetching weather data";
