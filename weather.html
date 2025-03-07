@@ -14,8 +14,9 @@
         <form>
             <input type="text" placeholder="Search City..." id="input-box"
                 style="border-style:none;padding:3px;border-radius:5px;">
+                <button id="submit-btn" type="submit" style="border-style:none;border-radius: 5px">Search</button>
         </form>
-        <button id="submit-btn" style="border-style:none;border-radius: 5px">Search</button>
+        
     </div>
     <h3 id="error-message" style="text-align: center;color: red;"></h3>
     <div style="display: flex; justify-content: center;text-align: center;">
@@ -38,15 +39,22 @@
         </main>
     </div>
     <script>
-        const apiKey = "your api key here";
+        const apiKey = "Your api key here";
         const errormsg = document.querySelector("#error-message")
         const srchbtn = document.querySelector("#submit-btn");
         const weatherdiv = document.querySelector("#weather-div")
         const tempdiv = document.querySelector("#temp-div")
         const winddiv = document.querySelector("#wind-div")
         const cityname = document.querySelector("#city-name")
-        srchbtn.addEventListener("click", () => {
-            const input = document.querySelector("#input-box");
+        const input = document.querySelector("#input-box");
+        input.addEventListener("keypress",(event)=>{
+            
+            if(event.key == "Enter"){
+                event.preventDefault()
+            srchbtn.click()}
+        })
+        srchbtn.addEventListener("click", (event) =>{
+            event.preventDefault();
             searched = input.value;
             getdata(searched);
         })
@@ -58,6 +66,9 @@
                     tempdiv.innerHTML = `${Math.trunc(data.main.temp - 273)} Celcius`;
                     winddiv.innerHTML = `${data.wind.speed} km/h`;
                     weatherdiv.innerHTML = data.weather[0].description;
+                    errormsg.innerHTML='';
+                    input.value=""
+
                 })
                 .catch(error => {
                     errormsg.innerHTML = "Error Fetching City Data!";
