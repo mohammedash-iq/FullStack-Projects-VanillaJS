@@ -75,24 +75,14 @@
         const input=document.querySelector("#display")
         const maindiv = document.querySelector("#main-body")
         maindiv.addEventListener("click", (event) => {
-            if (typeof(event.target.innerHTML)== 'number' || "=" || "+"||"/"||"*"||"-"||"C"||".")
-            addvalue(event.target.innerHTML);
+            if (event.target.innerHTML=="="){
+                input.value=eval(input.value)
+            }
+           else{
+            addvalue(event.target.innerHTML);}
         })
         function addvalue(char){
-            console.log(char)
-            if (char=="="){
-                equalBtnHandle()
-            }
-            else if(char=="C"){
-                clearBtnHandle()
-            }
             input.value=input.value+char;
-        }
-        function clearBtnHandle(){
-
-        }
-        function equalBtnHandle(){
-            
         }
     </script>
 </body>
