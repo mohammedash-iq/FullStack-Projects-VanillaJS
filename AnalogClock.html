@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Anolog Clock</title>
     <style>
@@ -9,6 +10,7 @@
         }
     </style>
 </head>
+
 <body>
     <div><canvas height="500" width="500" id="canvas"></canvas></div>
     <script>
@@ -19,7 +21,7 @@
             date = new Date();
             sethands(date.getSeconds(), -170, 3, "red")
             sethands(date.getMinutes() + date.getSeconds() / 60, -140, 6, "black")
-            sethands(date.getMinutes() / 60 + date.getSeconds() / 60 + date.getHours(), -90, 9, "black")
+            sethands(date.getMinutes() / 60 + date.getHours(), -90, 9, "black")
         }
         function sethands(time, len, wid, color) {
             can.beginPath()
@@ -48,4 +50,5 @@
         }, 1000);
     </script>
 </body>
+
 </html>
