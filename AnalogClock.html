@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Anolog Clock</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div><canvas height="500" width="500" id="canvas"></canvas></div>
+    <script>
+        const canvas = document.getElementById("canvas")
+        const can = canvas.getContext("2d")
+        function clockload() {
+            can.beginPath();
+            can.lineWidth = 5
+            can.lineCap = "round"
+            can.clearRect(0, 0, 500, 500)
+            can.strokeStyle = "blue"
+            can.arc(250, 250, 200, 0, 2 * Math.PI)
+            can.stroke()
+            date = new Date();
+            sethands(date.getSeconds(), date.getMinutes() - 30, date.getHours())
+        }
+        function sethands(second, minute, hour) {
+            can.beginPath()
+            can.moveTo(250, 250)
+            can.strokeStyle = "red"
+            can.lineTo(250 + 170 * Math.sin(second * (2 * Math.PI / 60)), 250 + 170 * -(Math.cos(second * (2 * Math.PI / 60))))
+            can.stroke();
+            can.beginPath()
+            can.moveTo(250, 250)
+            can.strokeStyle = "black"
+            can.lineTo(250 + 150 * Math.sin(minute * (2 * Math.PI / 60)), 250 + 150 * -(Math.cos(minute * (2 * Math.PI / 60))))
+            can.moveTo(250, 250)
+            can.lineTo(250 + 100 * Math.sin(hour * (2 * Math.PI / 12)), 250 + 100 * -(Math.cos(hour * (2 * Math.PI / 12))))
+            can.stroke();
+            can.font = "15px Arial";
+            for (i = 0; i < 13; i++) {
+                if (i == 0) continue;
+                can.fillText(i, 250 + 180 * Math.sin(i * (2 * Math.PI / 12)), 250 + 180 * -(Math.cos(i * (2 * Math.PI / 12))));
+            }
+        }
+        setInterval(() => {
+            clockload()
+        }, 1000);
+    </script>
+</body>
+
+</html>
