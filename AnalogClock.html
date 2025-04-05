@@ -21,7 +21,7 @@
             date = new Date();
             sethands(date.getSeconds(), -170, 3, "red",60)
             sethands(date.getMinutes() + date.getSeconds() / 60, -140, 6, "black",60)
-            sethands(date.getMinutes() / 60 + date.getHours(), -90, 9, "black",12)
+            sethands(date.getMinutes() / 60 + (date.getHours() % 12 || 12), -90, 9, "black",12)
         }
         function sethands(time, len, wid, color,div) {
             can.beginPath()
