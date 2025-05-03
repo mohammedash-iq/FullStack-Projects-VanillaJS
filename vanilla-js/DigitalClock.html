@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .time {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+        }
+
+        .dark {
+            background-color: rgb(66, 66, 66);
+            color: whitesmoke;
+        }
+
+        .light {
+            background-color: whitesmoke;
+            color: rgb(66, 66, 66);
+        }
+    </style>
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <body class="light">
+        <h1>Current Time is..</h1>
+        <button>DarkMode</button>
+        <div class="time">
+            <div class="hours"></div>
+            <p>:</p>
+            <div class="minutes"></div>
+            <p>:</p>
+            <div class="second"></div>
+        </div>
+        <script>setInterval(() => {
+                let datenow = new Date();
+                document.querySelector(".hours").innerHTML = datenow
+                    .getHours()
+                    .toString()
+                    .padStart(2, "0");
+                document.querySelector(".minutes").innerHTML = datenow
+                    .getMinutes()
+                    .toString()
+                    .padStart(2, "0");
+                document.querySelector(".second").innerHTML = datenow
+                    .getSeconds()
+                    .toString()
+                    .padStart(2, "0");
+            }, 1000);
+            const but = document.querySelector("button");
+            but.addEventListener("click", () => {
+                if (document.querySelector("body").classList.contains("dark")) {
+                    document.querySelector("body").classList.add("light");
+                    document.querySelector("body").classList.remove("dark");
+                } else {
+                    document.querySelector("body").classList.remove("light");
+                    document.querySelector("body").classList.add("dark");
+                }
+            });
+        </script>
+    </body>
+
+</html>
