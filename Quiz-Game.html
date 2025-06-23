@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz-Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Quiz Game</h1>
+    <p>Welcome to the Quiz Game! Test your knowledge with a series of questions.</p>
+    <div id="quiz-container" style="display: none;">
+        <h2 id="question-head">Question</h2>
+        <p id="question"> Question</p>
+        <div class="answers" onclick="answerclick(event)">
+            <button id="option1">Option</button>
+            <button id="option2">Option</button>
+            <button id="option3">Option</button>
+            <button id="option4">Option</button>
+        </div>
+    </div>
+
+    <button onclick="startQuiz()" id="next" style="display: block; margin-top: 20px;">Start Quiz</button>
+
+    <script>
+        var score = 0, questionscount = 1, result = "";
+        const questions = ["what is the capital of france?", "what is the capital of USA?", "what is the capital of india?", "what is the capital of Pakistan?"];
+        const options = [["Delhi", "Kenya", "Paris", "Whashinton", "Paris"],
+        ["Delhi", "Washington", "paris", "Lahore", "Washington"],
+        ["Delhi", "Kenya", "Paris", "Washington", "Delhi"],
+        ["Delhi", "Kenya", "Paris", "Lahore", "Lahore"]
+        ]
+        const startbtn = document.getElementById("next");
+        const quizContainer = document.getElementById("quiz-container");
+        var h = document.getElementById("question-head");
+        var q = document.getElementById("question");
+        const optionbtns = document.getElementById("answers");
+        var o1 = document.getElementById("option1");
+        var o2 = document.getElementById("option2");
+        var o3 = document.getElementById("option3");
+        var o4 = document.getElementById("option4");
+
+        function startQuiz() {
+            if (questionscount > questions.length) {
+                alert(`Your Score is ${score} out of ${questions.length}`)
+                return;
+            }
+            if (questionscount == questions.length) {
+                next.innerHTML = 'View Score';
+            }
+            else {
+                next.innerHTML = "Next Question";
+            }
+            quizContainer.style.display = "block";
+            h.innerHTML = `Question ${questionscount}`;
+            q.innerHTML = questions[questionscount - 1];
+            o1.disabled = false;
+            o2.disabled = false;
+            o3.disabled = false;
+            o4.disabled = false;
+            o1.innerHTML = options[questionscount - 1][0];
+            o2.innerHTML = options[questionscount - 1][1];
+            o3.innerHTML = options[questionscount - 1][2];
+            o4.innerHTML = options[questionscount - 1][3];
+            result = options[questionscount - 1][4];
+            questionscount++;
+        }
+        function answerclick(event) {
+            if (event.target.innerHTML == result) {
+                score++;
+            }
+            o1.disabled = true;
+            o2.disabled = true;
+            o3.disabled = true;
+            o4.disabled = true;
+        }
+    </script>
+</body>
+
+</html>
