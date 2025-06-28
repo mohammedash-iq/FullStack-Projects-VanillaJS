@@ -11,13 +11,18 @@
     <label for="select">Income</label>
     <input type="radio" id="expense" name="select" />
     <label for="select">Expense</label>
+
     <h3>Enter your Income</h3>
     <form>
       <label for="price">Enter Your Amount :</label>
-      <input type="text" name="income" id="value" />
+      <input type="text" name="income" id="amont" />
       <label for="discription">Discription</label>
-      <input type="text" name="discription" id="discription" />
-      <button id="adddata" type="submit">Add</button>
+      <input type="text" name="discription" id="discription" /><label for="date"
+        >Date</label
+      >
+      <input type="date" name="date" id="dateadded" />
+      <input type="submit" value="Add" />
+      <input type="reset" value="Reset" />
     </form>
     <section>
       <div>
@@ -31,7 +36,13 @@
           <option value="expense">Expense</option>
         </select>
       </div>
-      <div id="transactions">list of transactions</div>
+      <div>
+        <h4>Current Balance</h4>
+        <h4>Transactions History</h4>
+
+        <div id="transactions"></div>
+      </div>
     </section>
+    <script src="script.js"></script>
   </body>
 </html>
