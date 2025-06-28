@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Personal Budget Tracker</h1>
+    <input type="radio" name="select" id="income" />
+    <label for="select">Income</label>
+    <input type="radio" id="expense" name="select" />
+    <label for="select">Expense</label>
+    <h3>Enter your Income</h3>
+    <form>
+      <label for="price">Enter Your Amount :</label>
+      <input type="text" name="income" id="value" />
+      <label for="discription">Discription</label>
+      <input type="text" name="discription" id="discription" />
+      <button id="adddata" type="submit">Add</button>
+    </form>
+    <section>
+      <div>
+        <label for="startdate"></label>
+        <input type="date" name="startdate" id="startdate" />
+        <label for="enddate"></label>
+        <input type="date" name="enddate" id="enddate" />
+        <select name="type" id="type">
+          <option value="">Select Type</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+      </div>
+      <div id="transactions">list of transactions</div>
+    </section>
+  </body>
+</html>
