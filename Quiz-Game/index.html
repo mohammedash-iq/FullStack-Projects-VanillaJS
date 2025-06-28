@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz-Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <h1>Quiz Game</h1>
+    <p>
+      Welcome to the Quiz Game! Test your knowledge with a series of questions.
+    </p>
+    <div id="quiz-container" style="display: none">
+      <h2 id="question-head">Question</h2>
+      <p id="question">Question</p>
+      <div class="answers" onclick="answerclick(event)">
+        <button id="option1">Option</button>
+        <button id="option2">Option</button>
+        <button id="option3">Option</button>
+        <button id="option4">Option</button>
+      </div>
+      <div id="response"></div>
+      <button onclick="restartQuiz()" style="display: block; margin-top: 20px">
+        Restart Quiz
+      </button>
+    </div>
+
+    <button
+      onclick="startQuiz()"
+      id="next"
+      style="display: block; margin-top: 20px"
+    >
+      Start Quiz
+    </button>
+
+    <script src="script.js
+    "></script>
+  </body>
+</html>

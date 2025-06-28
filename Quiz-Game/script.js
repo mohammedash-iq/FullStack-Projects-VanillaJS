@@ -1,0 +1,93 @@
+var score = 0,
+  count = 1,
+  result = "";
+const questionList = [
+  {
+    question: "what is the capital of France?",
+    option: ["Delhi", "Kenya", "Paris", "Whashinton"],
+    answer: "Paris",
+  },
+  {
+    question: "what is the capital of USA?",
+    option: ["Delhi", "Washington", "paris", "Lahore"],
+    answer: "Washington",
+  },
+  {
+    question: "what is the capital of india?",
+    option: ["Delhi", "Kenya", "Paris", "Washington"],
+    answer: "Delhi",
+  },
+  {
+    question: "what is the capital of Pakistan?",
+    option: ["Delhi", "Kenya", "Paris", "Lahore"],
+    answer: "Lahore",
+  },
+];
+const startbtn = document.getElementById("next");
+const quizContainer = document.getElementById("quiz-container");
+const h = document.getElementById("question-head");
+const q = document.getElementById("question");
+const o1 = document.getElementById("option1");
+const o2 = document.getElementById("option2");
+const o3 = document.getElementById("option3");
+const o4 = document.getElementById("option4");
+const response = document.getElementById("response");
+
+function startQuiz() {
+  if (count > questionList.length) {
+    displayScore();
+    return;
+  }
+  count == questionList.length
+    ? (next.innerHTML = "View Score")
+    : (next.innerHTML = "Next Question");
+  loadQuestions();
+  count++;
+}
+function loadQuestions() {
+  response.innerHTML = "";
+  quizContainer.style.display = "block";
+  o1.disabled = false;
+  o2.disabled = false;
+  o3.disabled = false;
+  o4.disabled = false;
+  h.innerHTML = `Question ${count}`;
+  q.innerHTML = questionList[count - 1].question;
+  o1.innerHTML = questionList[count - 1].option[0];
+  o2.innerHTML = questionList[count - 1].option[1];
+  o3.innerHTML = questionList[count - 1].option[2];
+  o4.innerHTML = questionList[count - 1].option[3];
+  result = questionList[count - 1].answer;
+  startbtn.disabled = true;
+}
+function answerclick(event) {
+  if (event.target.innerHTML == result) {
+    score++;
+    response.innerHTML = "Your are Right!";
+    response.style.color = "lightgreen";
+  } else {
+    response.innerHTML = "You are Wrong!";
+    response.style.color = "red";
+  }
+  o1.disabled = true;
+  o2.disabled = true;
+  o3.disabled = true;
+  o4.disabled = true;
+  startbtn.disabled = false;
+}
+function restartQuiz() {
+  score = 0;
+  quizContainer.style.display = "none";
+  count = 1;
+  startbtn.disabled = false;
+  startbtn.innerHTML = "Start Quiz";
+}
+function displayScore() {
+  highscore = localStorage.getItem("Highscore");
+  if (!highscore || highscore < score) {
+    localStorage.setItem("Highscore", score);
+    alert(`New High Score :${score}`);
+  } else {
+    alert(`Your Score: ${score} (High Score: ${highscore})`);
+  }
+}
